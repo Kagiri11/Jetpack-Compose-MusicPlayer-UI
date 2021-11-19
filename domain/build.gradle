@@ -1,0 +1,19 @@
+plugins {
+    id 'java-library'
+    id 'kotlin'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_7
+    targetCompatibility = JavaVersion.VERSION_1_7
+}
+
+dependencies{
+    // Koin core features
+    implementation "io.insert-koin:koin-core:$koin_version"
+    // Koin test features
+    testImplementation "io.insert-koin:koin-test:$koin_version"
+
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"
+
+}

@@ -1,0 +1,26 @@
+package com.example.domain.models.album
+
+data class Album(
+    val artist: Artist,
+    val contributors: List<Contributor>,
+    val cover: String,
+    val cover_big: String,
+    val cover_medium: String,
+    val cover_small: String,
+    val duration: Int,
+    val explicit_content_cover: Int,
+    val explicit_content_lyrics: Int,
+    val explicit_lyrics: Boolean,
+    val fans: Int,
+    val genre_id: Int,
+    val genres: Genres,
+    val id: Int,
+    val link: String,
+    val md5_image: String,
+    val nb_tracks: Int,
+    val record_type: String,
+    val release_date: String,
+    val title: String,
+    val tracklist: String,
+    val tracks: Tracks,
+)
