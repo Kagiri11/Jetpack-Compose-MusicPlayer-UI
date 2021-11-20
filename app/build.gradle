@@ -60,7 +60,15 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     implementation "androidx.constraintlayout:constraintlayout-compose:1.0.0-beta02"
 
+    // Koin
+    implementation "io.insert-koin:koin-android:$koin_version"
+    implementation "io.insert-koin:koin-androidx-compose:$koin_version"
+
+    //lifecycle
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.3.1'
+
     implementation project(":data:network")
+    implementation project(":data:repository")
     implementation project(":domain")
 
     //Timber-Logging

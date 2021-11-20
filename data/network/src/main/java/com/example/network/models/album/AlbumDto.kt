@@ -1,26 +1,32 @@
-package com.example.domain.models.album
+package com.example.network.models.album
 
-data class Album(
-    val artist: AlbumArtist,
+data class AlbumDto(
+    val artist: AlbumArtistDto,
     val available: Boolean,
-    val contributors: List<AlbumContributor>,
+    val contributors: List<AlbumContributorDto>,
     val cover: String,
     val cover_big: String,
     val cover_medium: String,
     val cover_small: String,
     val cover_xl: String,
     val duration: Int,
+    val explicit_content_cover: Int,
+    val explicit_content_lyrics: Int,
+    val explicit_lyrics: Boolean,
     val fans: Int,
     val genre_id: Int,
-    val genres: AlbumGenres,
+    val genres: AlbumGenresDto,
     val id: Int,
+    val label: String,
     val link: String,
     val md5_image: String,
     val nb_tracks: Int,
     val record_type: String,
     val release_date: String,
+    val share: String,
     val title: String,
     val tracklist: String,
-    val tracks: AlbumTracks,
+    val tracks: AlbumTracksDto,
     val type: String,
+    val upc: String
 )

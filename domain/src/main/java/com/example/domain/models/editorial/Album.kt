@@ -1,7 +1,7 @@
-package com.example.network.models.editorial
+package com.example.domain.models.editorial
 
-data class AlbumDto(
-    val artist: EditorialAlbumArtistDto,
+data class Album(
+    val artist: EditorialAlbumArtist,
     val cover: String,
     val cover_big: String,
     val cover_medium: String,
