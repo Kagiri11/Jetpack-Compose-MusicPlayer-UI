@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
 
 class FetchAlbum(private val repository: AppRepository) {
-    suspend operator fun invoke(albumId: Int): Flow<Album> {
+    suspend operator fun invoke(albumId:Int): Flow<Album> {
         return repository.fetchAlbum(albumId)
     }
 }

@@ -14,7 +14,7 @@ class AppRepositoryImpl(private val api: ApiService): AppRepository {
         return flowOf(editorials.toDomain())
     }
 
-    override suspend fun fetchAlbum(albumId: Int): Flow<Album> {
+    override suspend fun fetchAlbum(albumId:Int): Flow<Album> {
         val album = api.fetchAlbum(albumId)
        return flowOf(album.toDomain())
     }

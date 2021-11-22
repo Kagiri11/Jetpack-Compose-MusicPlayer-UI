@@ -2,6 +2,7 @@ package com.example.lily.ui.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.*
@@ -10,10 +11,7 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Card
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -23,9 +21,11 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
+import androidx.navigation.NavController
 import coil.compose.rememberImagePainter
 import coil.transform.CircleCropTransformation
 import com.example.domain.models.editorial.*
+import com.example.lily.ui.screens.navigation.Screen
 import com.example.lily.ui.screens.trending.TrendingViewModel
 import org.koin.androidx.compose.getViewModel
 
@@ -44,8 +44,10 @@ val images = listOf(
     "https://resources.tidal.com/images/3b4e281e/eac3/49a8/9ea9/5753ede959f9/320x320.jpg"
 )
 
+
+@ExperimentalMaterialApi
 @Composable
-fun Trending() {
+fun Trending(modifier: Modifier = Modifier,navController: NavController) {
     val trendingViewModel: TrendingViewModel = getViewModel()
 
     val editorial = remember{ trendingViewModel.edt}
@@ -74,7 +76,7 @@ fun Trending() {
                 editorial.value.artists.data
             )
             CustomText(
-                text = "New Releases",
+                text = "Albums",
                 style = MaterialTheme.typography.h2,
                 modifier = Modifier.constrainAs(releaseTitle) {
                     top.linkTo(trendingList.bottom, margin = 10.dp)
@@ -88,7 +90,8 @@ fun Trending() {
                         start.linkTo(parent.start)
                         end.linkTo(parent.end)
                     },
-                editorial.value.albums.data
+                editorial.value.albums.data,
+                navController
             )
         }
     }
@@ -136,8 +139,10 @@ fun TrendingImage(imageUrl: String) {
     )
 }
 
+
+@ExperimentalMaterialApi
 @Composable
-fun ReleasedItem(modifier: Modifier = Modifier,albums: List<Album>) {
+fun ReleasedItem(modifier: Modifier = Modifier,albums: List<Album>,navController: NavController) {
 //    Surface(
 //        modifier = Modifier.fillMaxWidth().
 //    ) {
@@ -153,24 +158,26 @@ fun ReleasedItem(modifier: Modifier = Modifier,albums: List<Album>) {
         items(albums) { album->
             with(album){
                 ReleasedItemComposable(
-                    imageUrl = cover_medium,
-                    albumArtist = artist.name,
-                    nameOfAlbum = title,
-                    dateOfRelease = record_type
+                    imageUrl = cover_xl,
+                    albumArtist = title,
+                    nameOfAlbum = artist.name,
+                    dateOfRelease = record_type,
+                    navController
                 )
             }
         }
     }
 }
 
+@ExperimentalMaterialApi
 @Composable
-fun ReleasedItemComposable(imageUrl: String,albumArtist:String,nameOfAlbum:String,dateOfRelease:String) {
+fun ReleasedItemComposable(imageUrl: String,albumArtist:String,nameOfAlbum:String,dateOfRelease:String,navController: NavController) {
 
     ConstraintLayout(
         modifier = Modifier
             .fillMaxWidth()
             .height(100.dp)
-            .background(color = Color.White)
+            .background(color = Color.White),
 
     ) {
         val (imageCard, artistName, albumName, releasedTime) = createRefs()
@@ -184,10 +191,17 @@ fun ReleasedItemComposable(imageUrl: String,albumArtist:String,nameOfAlbum:Strin
                 }
             ,
             shape = RoundedCornerShape(10),
-            elevation = 8.dp, backgroundColor = Color.Magenta
+            elevation = 8.dp, backgroundColor = Color.Magenta,
+            onClick = {
+                navController.navigate(Screen.AlbumScreen.route)
+            }
+
         ) {
             val imagePainter = rememberImagePainter(
                 data = imageUrl,
+                builder = {
+                    this.crossfade(1000)
+                }
 
             ) as Painter
             Image(

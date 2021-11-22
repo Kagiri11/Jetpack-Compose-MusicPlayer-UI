@@ -8,6 +8,7 @@ buildscript {
         loggingIntercepter_version = "5.0.0-alpha.2"
         timber_version = "5.0.1"
         coroutines_version = "1.5.2"
+        accompanist_version = "0.17.0"
     }
     repositories {
         google()

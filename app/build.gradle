@@ -60,12 +60,17 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     implementation "androidx.constraintlayout:constraintlayout-compose:1.0.0-beta02"
 
+    implementation "androidx.navigation:navigation-compose:2.4.0-beta02"
+
     // Koin
     implementation "io.insert-koin:koin-android:$koin_version"
     implementation "io.insert-koin:koin-androidx-compose:$koin_version"
 
     //lifecycle
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.3.1'
+
+    //Accompanist
+    implementation "com.google.accompanist:accompanist-systemuicontroller:$accompanist_version"
 
     implementation project(":data:network")
     implementation project(":data:repository")

@@ -12,7 +12,7 @@ interface AppRepository {
     suspend fun fetchEditorial(): Flow<Editorial>
 
     //Fetch album by its ID
-    suspend fun fetchAlbum(albumId: Int): Flow<Album>
+    suspend fun fetchAlbum(albumId:Int): Flow<Album>
 
 //    //Fetch an artist by his/her ID
 //    suspend fun fetchArtist(artistId:Int):Flow<Artist>
