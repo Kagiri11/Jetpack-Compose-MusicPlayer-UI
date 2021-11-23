@@ -21,6 +21,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
+import androidx.constraintlayout.compose.Dimension
 import androidx.navigation.NavController
 import coil.compose.rememberImagePainter
 import coil.transform.CircleCropTransformation
@@ -89,6 +90,8 @@ fun Trending(modifier: Modifier = Modifier,navController: NavController) {
                         top.linkTo(releaseTitle.bottom)
                         start.linkTo(parent.start)
                         end.linkTo(parent.end)
+                        bottom.linkTo(parent.bottom)
+                        height= Dimension.fillToConstraints
                     },
                 editorial.value.albums.data,
                 navController
@@ -158,10 +161,7 @@ fun ReleasedItem(modifier: Modifier = Modifier,albums: List<Album>,navController
         items(albums) { album->
             with(album){
                 ReleasedItemComposable(
-                    imageUrl = cover_xl,
-                    albumArtist = title,
-                    nameOfAlbum = artist.name,
-                    dateOfRelease = record_type,
+                    this,
                     navController
                 )
             }
@@ -171,7 +171,7 @@ fun ReleasedItem(modifier: Modifier = Modifier,albums: List<Album>,navController
 
 @ExperimentalMaterialApi
 @Composable
-fun ReleasedItemComposable(imageUrl: String,albumArtist:String,nameOfAlbum:String,dateOfRelease:String,navController: NavController) {
+fun ReleasedItemComposable(album: Album,navController: NavController) {
 
     ConstraintLayout(
         modifier = Modifier
@@ -193,12 +193,12 @@ fun ReleasedItemComposable(imageUrl: String,albumArtist:String,nameOfAlbum:Strin
             shape = RoundedCornerShape(10),
             elevation = 8.dp, backgroundColor = Color.Magenta,
             onClick = {
-                navController.navigate(Screen.AlbumScreen.route)
+                navController.navigate("album_screen/"+album.id)
             }
 
         ) {
             val imagePainter = rememberImagePainter(
-                data = imageUrl,
+                data = album.cover_xl,
                 builder = {
                     this.crossfade(1000)
                 }
@@ -211,7 +211,7 @@ fun ReleasedItemComposable(imageUrl: String,albumArtist:String,nameOfAlbum:Strin
             )
         }
         CustomText(
-            text = albumArtist,
+            text = album.title,
             style = MaterialTheme.typography.h3,
             modifier = Modifier.constrainAs(artistName) {
                 top.linkTo(parent.top, margin = 10.dp)
@@ -219,7 +219,7 @@ fun ReleasedItemComposable(imageUrl: String,albumArtist:String,nameOfAlbum:Strin
             }
         )
         CustomText(
-            text = nameOfAlbum,
+            text = album.artist.name,
             style = MaterialTheme.typography.body1,
             modifier = Modifier.constrainAs(albumName){
                 start.linkTo(imageCard.end,margin = 15.dp)
@@ -228,7 +228,7 @@ fun ReleasedItemComposable(imageUrl: String,albumArtist:String,nameOfAlbum:Strin
 
         )
         CustomText(
-            text = dateOfRelease,
+            text = album.record_type,
             style = MaterialTheme.typography.body2,
             modifier = Modifier.constrainAs(releasedTime){
                 start.linkTo(imageCard.end, margin = 15.dp)

@@ -1,13 +1,17 @@
 package com.example.lily.ui.screens.navigation
 
+import android.util.Log
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHost
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.navArgument
 import com.example.lily.ui.screens.Trending
 import com.example.lily.ui.screens.album.AlbumScreen
+import timber.log.Timber
 
 
 @ExperimentalMaterialApi
@@ -19,8 +23,17 @@ fun SetupNavGraph(
         composable(route = Screen.Trending.route){
             Trending(navController=navController)
         }
-        composable(route = Screen.AlbumScreen.route){
-            AlbumScreen(navController=navController)
+        composable(
+            route = Screen.AlbumScreen.route,
+            arguments = listOf(navArgument("albumId"){
+                type = NavType.IntType
+            }
+            )
+        ){
+            Log.d("albumId",it.arguments?.getInt("albumId").toString())
+            val id = it.arguments!!.getInt("albumId")
+
+            AlbumScreen(navController = navController,id)
         }
     }
 }

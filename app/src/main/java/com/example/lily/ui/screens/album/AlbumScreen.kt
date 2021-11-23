@@ -50,8 +50,9 @@ val images = listOf(
 
 @Composable
 
-fun AlbumScreen(navController: NavController) {
+fun AlbumScreen(navController: NavController,albumId:Int) {
     val viewModel: AlbumViewModel by inject()
+    viewModel.getAlbum(albumId)
     val album = viewModel.album.value
 
     ConstraintLayout(modifier = Modifier.fillMaxSize()) {
@@ -147,8 +148,9 @@ fun AlbumMusicCard(modifier: Modifier = Modifier,songs:List<AlbumTrack>) {
                 contentPadding = PaddingValues(10.dp),
                 verticalArrangement = Arrangement.spacedBy(5.dp)
             ) {
-                items(songs){ number->
-                    AlbumMusicItem(1,number)
+                itemsIndexed(songs){index, track ->
+                    AlbumMusicItem(position = index+1, track =track )
+
                 }
 
             }

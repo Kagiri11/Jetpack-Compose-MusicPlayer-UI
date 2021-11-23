@@ -12,10 +12,6 @@ import kotlinx.coroutines.launch
 
 class AlbumViewModel(private val fetchAlbum: FetchAlbum) : ViewModel() {
 
-    init {
-        getAlbum()
-    }
-
     private val albumState = Album(
         artist = AlbumArtist(
             id = 27,
@@ -79,8 +75,8 @@ class AlbumViewModel(private val fetchAlbum: FetchAlbum) : ViewModel() {
     private val _album: MutableState<Album> = mutableStateOf(albumState)
     val album: State<Album> get() = _album
 
-    private fun getAlbum() = viewModelScope.launch {
-        fetchAlbum.invoke(302127).collect {
+    fun getAlbum(albumId:Int) = viewModelScope.launch {
+        fetchAlbum.invoke(albumId).collect {
             _album.value = it
         }
     }

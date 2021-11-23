@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -18,6 +19,7 @@ import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.example.lily.ui.screens.ParentScreen
 import com.example.lily.ui.screens.Trending
 import com.example.lily.ui.screens.album.AlbumScreen
 import com.example.lily.ui.screens.navigation.SetupNavGraph
@@ -32,13 +34,14 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             LILYTheme {
-                navHostController = rememberNavController()
-                SetupNavGraph(navController = navHostController)
+                ParentScreen()
 //                Scaffold(
 //                    bottomBar = {LilyBottomNav()},
 //                    content = {
+//                        it.calculateBottomPadding()
 //
-//                        Trending(navController = navHostController)
+//                        navHostController = rememberNavController()
+//                        SetupNavGraph(navController = navHostController)
 //                    }
 //                )
             }
