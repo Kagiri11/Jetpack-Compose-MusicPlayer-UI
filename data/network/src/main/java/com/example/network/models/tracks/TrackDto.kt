@@ -1,8 +1,8 @@
 package com.example.network.models.tracks
 
-data class Data(
-    val album: Album,
-    val artist: Artist,
+data class TrackDto(
+    val album: TrackAlbumDto,
+    val artist: TrackArtistDto,
     val duration: Int,
     val explicit_content_cover: Int,
     val explicit_content_lyrics: Int,

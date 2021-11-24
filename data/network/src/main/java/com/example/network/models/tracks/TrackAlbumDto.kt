@@ -1,6 +1,6 @@
 package com.example.network.models.tracks
 
-data class Album(
+data class TrackAlbumDto(
     val cover: String,
     val cover_big: String,
     val cover_medium: String,
