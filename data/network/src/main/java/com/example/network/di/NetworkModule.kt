@@ -1,5 +1,6 @@
 package com.example.network.di
 
+import com.example.network.apis.ApiDirect
 import com.example.network.apis.ApiService
 import com.example.network.utils.Constants.BASE_URL
 import okhttp3.OkHttpClient
@@ -20,5 +21,13 @@ val networkModule= module {
             .baseUrl(BASE_URL)
             .build()
             .create(ApiService::class.java)
+    }
+    single{
+        Retrofit.Builder()
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(client)
+            .baseUrl("api.deezer.com/playlist/547789765/tracks")
+            .build()
+            .create(ApiDirect::class.java)
     }
 }
