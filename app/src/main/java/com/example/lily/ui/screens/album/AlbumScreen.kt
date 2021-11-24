@@ -25,6 +25,7 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.text.style.TextAlign
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import androidx.navigation.NavController
@@ -149,7 +150,7 @@ fun AlbumMusicCard(modifier: Modifier = Modifier,songs:List<AlbumTrack>) {
                 verticalArrangement = Arrangement.spacedBy(5.dp)
             ) {
                 itemsIndexed(songs){index, track ->
-                    AlbumMusicItem(position = index+1, track =track )
+                    AlbumMusicItem(position = index+1, trackTitle = track.title,artistName = track.artist.name )
 
                 }
 
@@ -160,7 +161,7 @@ fun AlbumMusicCard(modifier: Modifier = Modifier,songs:List<AlbumTrack>) {
 }
 
 @Composable
-fun AlbumMusicItem(position:Int ,track:AlbumTrack) {
+fun AlbumMusicItem(position:Int ,trackTitle:String,artistName:String) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -170,14 +171,14 @@ fun AlbumMusicItem(position:Int ,track:AlbumTrack) {
         verticalAlignment = Alignment.CenterVertically
     ) {
         Spacer(modifier = Modifier.width(20.dp))
-        CustomText(text = position.toString(), style = TextStyle(color = Color.Black,fontSize = 12.sp))
+        CustomText(text = position.toString(), style = TextStyle(color = Color.Black,fontSize = 12.sp,textAlign = TextAlign.Center))
         Spacer(modifier = Modifier.width(40.dp))
         Column(
             verticalArrangement = Arrangement.SpaceAround,
             horizontalAlignment = Alignment.Start
         ) {
-            CustomText(text = track.title_short, style = MaterialTheme.typography.body1)
-            CustomText(text = track.artist.name, style = MaterialTheme.typography.body2)
+            CustomText(text = trackTitle, style = MaterialTheme.typography.body1)
+            CustomText(text = artistName, style = MaterialTheme.typography.body2)
         }
 
         Spacer(modifier = Modifier.weight(1f))
