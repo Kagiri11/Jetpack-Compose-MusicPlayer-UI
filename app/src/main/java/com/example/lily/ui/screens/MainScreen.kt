@@ -2,23 +2,17 @@ package com.example.lily.ui.screens
 
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.material.*
-import androidx.compose.material.icons.Icons
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.unit.dp
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
-import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.example.lily.ui.screens.navigation.BottomNavGraph
-import com.example.lily.ui.screens.navigation.BottomNavScreen
-import com.example.lily.ui.screens.navigation.SetupNavGraph
-import com.example.lily.R
+import com.example.lily.ui.navigation.BottomNavGraph
+import com.example.lily.ui.navigation.BottomNavScreen
 
 @ExperimentalMaterialApi
 @Composable

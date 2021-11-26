@@ -1,9 +1,8 @@
-package com.example.lily.ui.screens.navigation
+package com.example.lily.ui.navigation
 
 import android.util.Log
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.runtime.Composable
-import androidx.navigation.NavHost
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
@@ -11,7 +10,6 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.example.lily.ui.screens.Trending
 import com.example.lily.ui.screens.album.AlbumScreen
-import timber.log.Timber
 
 
 @ExperimentalMaterialApi

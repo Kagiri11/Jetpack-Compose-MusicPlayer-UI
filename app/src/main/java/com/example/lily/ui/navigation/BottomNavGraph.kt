@@ -1,4 +1,4 @@
-package com.example.lily.ui.screens.navigation
+package com.example.lily.ui.navigation
 
 import android.util.Log
 import androidx.compose.material.ExperimentalMaterialApi

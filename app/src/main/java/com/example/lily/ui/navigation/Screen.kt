@@ -1,9 +1,5 @@
-package com.example.lily.ui.screens.navigation
+package com.example.lily.ui.navigation
 
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.*
-import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.res.painterResource
 import com.example.lily.R
 
 sealed class Screen(val route:String){
