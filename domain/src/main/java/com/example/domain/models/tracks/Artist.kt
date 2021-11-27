@@ -2,13 +2,13 @@ package com.example.domain.models.tracks
 
 data class Artist(
     val id: Int,
-    val link: String,
-    val name: String,
-    val picture: String,
-    val picture_big: String,
-    val picture_medium: String,
-    val picture_small: String,
-    val picture_xl: String,
-    val tracklist: String,
+    val link: String?=null,
+    val name: String?=null,
+    val picture: String?=null,
+    val picture_big: String?=null,
+    val picture_medium: String?=null,
+    val picture_small: String?=null,
+    val picture_xl: String?=null,
+    val tracklist: String?=null,
     val type: String
 )
