@@ -38,19 +38,7 @@ import com.example.lily.ui.theme.fonts
 import org.koin.androidx.compose.inject
 import timber.log.Timber
 
-val images = listOf(
-    "https://bravewords.com/medias-static/images/news/2021/61157E5C-dire-straits-bassist-john-illsley-to-release-my-life-in-dire-straits-memoir-in-november-features-foreword-by-mark-knopfler-image.jpeg",
-    "https://press.warnerrecords.com/wp-content/uploads/2019/12/Popcaan-by-Jamal-Burger-150x150.jpg",
-    "https://direct.rhapsody.com/imageserver/images/alb.355323472/500x500.jpg",
-    "https://www.reggaeville.com/fileadmin/user_upload/seanpaul.jpg",
-    "https://1.bp.blogspot.com/-Kf2jsiheeFI/X0C-xVHJwDI/AAAAAAAAD5Y/YBPGNgiA7gUZku4dbjNO9UV-ULqetZwowCLcBGAsYHQ/w320-h317/Solana-ft.-Joeboy-%25E2%2580%2593-Far-Away.jpg",
-    "https://resources.tidal.com/images/debf2942/0f33/44c7/89f9/dc9c681f3ffd/320x320.jpg",
-    "https://resources.tidal.com/images/3b4e281e/eac3/49a8/9ea9/5753ede959f9/320x320.jpg"
-)
-
-
 @Composable
-
 fun AlbumScreen(navController: NavController,albumId:Int) {
     val viewModel: AlbumViewModel by inject()
     viewModel.getAlbum(albumId)
