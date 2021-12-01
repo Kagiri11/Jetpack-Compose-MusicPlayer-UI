@@ -10,7 +10,7 @@ Hence this tends to be the most abstracted layer of the project.
 ### 2. Data.
 As the name declares, this layer is responsible for handling data that revolves our project. Following the abstraction principle, parts of this layer provide implemetations for the policies set in our domain layer.
 All things to do with data transformation also happens here just to enforce the rule of crossing over boundaries.
-### 3. Presentation.
+### 3. Presentation(App in this case).
 This layer plays host to artifacts responsible for information presentation to the user.
 
 ## Tech Stack
