@@ -2,6 +2,7 @@
 
 This is a small project I am doing to interact with and explore Jetpack Compose components.
 
+## Project Structure
 ### 1. Domain.
 This layer is responsible for setting up the projects business rules. Also this is the layer that exposes the usecases around our software artifact.
 Hence this tends to be the most abstracted layer of the project.
