@@ -1,4 +1,4 @@
-# Jetpack-Compose-MusicPlayer-UI 🎵
+# Jetpack-Compose-MusicPlayer-UI 🎵 - Still under development
 
 This is a small project I am doing to interact with and explore Jetpack Compose components.
 
