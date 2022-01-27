@@ -1,10 +1,17 @@
 package com.example.lily.ui.screens.album
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
@@ -15,31 +22,24 @@ import androidx.compose.ui.draw.drawWithCache
 import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.lazy.itemsIndexed
-import androidx.compose.ui.graphics.painter.Painter
-import androidx.compose.ui.text.style.TextAlign
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import androidx.navigation.NavController
 import coil.compose.rememberImagePainter
-import coil.transform.CircleCropTransformation
 import com.example.domain.models.album.AlbumTrack
-import com.example.lily.R
 import com.example.lily.ui.screens.CustomText
 import com.example.lily.ui.theme.fonts
 import org.koin.androidx.compose.inject
-import timber.log.Timber
 
 @Composable
-fun AlbumScreen(navController: NavController,albumId:Int) {
+fun AlbumScreen(navController: NavController, albumId: Int) {
     val viewModel: AlbumViewModel by inject()
     viewModel.getAlbum(albumId)
     val album = viewModel.album.value
@@ -52,7 +52,7 @@ fun AlbumScreen(navController: NavController,albumId:Int) {
                 top.linkTo(parent.top)
                 start.linkTo(parent.start)
                 end.linkTo(parent.end)
-            },album.cover_xl
+            }, album.cover_xl
         )
         AlbumMusicCard(
             modifier = Modifier.constrainAs(musicCard) {
@@ -80,7 +80,7 @@ fun AlbumScreen(navController: NavController,albumId:Int) {
 }
 
 @Composable
-fun AlbumImage(modifier: Modifier = Modifier,albumImageUrl:String) {
+fun AlbumImage(modifier: Modifier = Modifier, albumImageUrl: String) {
     val img =
         rememberImagePainter(
             data = albumImageUrl,
@@ -103,12 +103,12 @@ fun AlbumImage(modifier: Modifier = Modifier,albumImageUrl:String) {
 
                 }
             },
-        contentScale = ContentScale.Fit
+        contentScale = ContentScale.Crop
     )
 }
 
 @Composable
-fun AlbumMusicCard(modifier: Modifier = Modifier,songs:List<AlbumTrack>) {
+fun AlbumMusicCard(modifier: Modifier = Modifier, songs: List<AlbumTrack>) {
 
     Card(
         modifier = modifier
@@ -120,7 +120,7 @@ fun AlbumMusicCard(modifier: Modifier = Modifier,songs:List<AlbumTrack>) {
         ConstraintLayout(
             modifier.fillMaxSize()
         ) {
-            val (musicColumn,mybox) = createRefs()
+            val (musicColumn, mybox) = createRefs()
 
             LazyColumn(
                 modifier = modifier
@@ -132,13 +132,16 @@ fun AlbumMusicCard(modifier: Modifier = Modifier,songs:List<AlbumTrack>) {
                         bottom.linkTo(parent.bottom)
                         height = Dimension.fillToConstraints
                     }
-                    .fillMaxWidth()
-                ,
+                    .fillMaxWidth(),
                 contentPadding = PaddingValues(10.dp),
                 verticalArrangement = Arrangement.spacedBy(5.dp)
             ) {
-                itemsIndexed(songs){index, track ->
-                    AlbumMusicItem(position = index+1, trackTitle = track.title,artistName = track.artist.name )
+                itemsIndexed(songs) { index, track ->
+                    AlbumMusicItem(
+                        position = index + 1,
+                        trackTitle = track.title,
+                        artistName = track.artist.name
+                    )
 
                 }
 
@@ -149,17 +152,19 @@ fun AlbumMusicCard(modifier: Modifier = Modifier,songs:List<AlbumTrack>) {
 }
 
 @Composable
-fun AlbumMusicItem(position:Int ,trackTitle:String,artistName:String) {
+fun AlbumMusicItem(position: Int, trackTitle: String, artistName: String) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .height(60.dp)
-        ,
+            .height(60.dp),
         horizontalArrangement = Arrangement.SpaceAround,
         verticalAlignment = Alignment.CenterVertically
     ) {
         Spacer(modifier = Modifier.width(20.dp))
-        CustomText(text = position.toString(), style = TextStyle(color = Color.Black,fontSize = 12.sp,textAlign = TextAlign.Center))
+        CustomText(
+            text = position.toString(),
+            style = TextStyle(color = Color.Black, fontSize = 12.sp, textAlign = TextAlign.Center)
+        )
         Spacer(modifier = Modifier.width(40.dp))
         Column(
             verticalArrangement = Arrangement.SpaceAround,

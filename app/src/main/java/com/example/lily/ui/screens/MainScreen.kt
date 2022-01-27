@@ -13,14 +13,18 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.lily.ui.navigation.BottomNavGraph
 import com.example.lily.ui.navigation.BottomNavScreen
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 @ExperimentalMaterialApi
 @Composable
 fun ParentScreen(){
     val navController = rememberNavController()
+
+
     Scaffold(
         bottomBar = { LilyBottomNavigation(navHostController = navController)},
     ){
+
 
         BottomNavGraph(navController = navController)
     }

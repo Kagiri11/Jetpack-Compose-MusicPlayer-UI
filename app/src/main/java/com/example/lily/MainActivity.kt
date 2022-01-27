@@ -27,15 +27,6 @@ class MainActivity : ComponentActivity() {
         setContent {
             LILYTheme {
                 ParentScreen()
-//                Scaffold(
-//                    bottomBar = {LilyBottomNav()},
-//                    content = {
-//                        it.calculateBottomPadding()
-//
-//                        navHostController = rememberNavController()
-//                        SetupNavGraph(navController = navHostController)
-//                    }
-//                )
             }
         }
     }
