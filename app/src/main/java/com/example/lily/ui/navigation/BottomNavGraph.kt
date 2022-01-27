@@ -9,7 +9,7 @@ import androidx.navigation.*
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
-import com.example.lily.ui.screens.Trending
+import com.example.lily.ui.screens.trending.Trending
 import com.example.lily.ui.screens.album.AlbumScreen
 import com.example.lily.ui.screens.search.SearchScreen
 import com.example.lily.ui.screens.settings.SettingsScreen

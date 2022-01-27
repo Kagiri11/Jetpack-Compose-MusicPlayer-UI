@@ -34,7 +34,7 @@ import androidx.constraintlayout.compose.Dimension
 import androidx.navigation.NavController
 import coil.compose.rememberImagePainter
 import com.example.domain.models.album.AlbumTrack
-import com.example.lily.ui.screens.CustomText
+import com.example.lily.ui.screens.trending.CustomText
 import com.example.lily.ui.theme.fonts
 import org.koin.androidx.compose.inject
 

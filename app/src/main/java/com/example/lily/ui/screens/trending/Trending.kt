@@ -1,14 +1,17 @@
-package com.example.lily.ui.screens
+package com.example.lily.ui.screens.trending
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -22,29 +25,18 @@ import androidx.navigation.NavController
 import coil.compose.rememberImagePainter
 import coil.transform.CircleCropTransformation
 import com.example.domain.models.editorial.*
-import com.example.lily.ui.screens.trending.TrendingViewModel
+import com.example.lily.ui.screens.components.EnterExitFader
 import org.koin.androidx.compose.getViewModel
-
-val editorialState = Editorial(
-    albums = Albums(listOf(),0),artists = EditorialArtists(listOf(),0,),tracks = EditorialTracks(
-        listOf(),0)
-)
-
-val images = listOf(
-    "https://bravewords.com/medias-static/images/news/2021/61157E5C-dire-straits-bassist-john-illsley-to-release-my-life-in-dire-straits-memoir-in-november-features-foreword-by-mark-knopfler-image.jpeg",
-    "https://press.warnerrecords.com/wp-content/uploads/2019/12/Popcaan-by-Jamal-Burger-150x150.jpg",
-    "https://direct.rhapsody.com/imageserver/images/alb.355323472/500x500.jpg",
-    "https://www.reggaeville.com/fileadmin/user_upload/seanpaul.jpg",
-    "https://1.bp.blogspot.com/-Kf2jsiheeFI/X0C-xVHJwDI/AAAAAAAAD5Y/YBPGNgiA7gUZku4dbjNO9UV-ULqetZwowCLcBGAsYHQ/w320-h317/Solana-ft.-Joeboy-%25E2%2580%2593-Far-Away.jpg",
-    "https://resources.tidal.com/images/debf2942/0f33/44c7/89f9/dc9c681f3ffd/320x320.jpg",
-    "https://resources.tidal.com/images/3b4e281e/eac3/49a8/9ea9/5753ede959f9/320x320.jpg"
-)
 
 
 @ExperimentalMaterialApi
 @Composable
 fun Trending(modifier: Modifier = Modifier,navController: NavController) {
+    val scrollState = rememberLazyListState()
     val trendingViewModel: TrendingViewModel = getViewModel()
+    val isFirstItemVisible = remember{
+        derivedStateOf { scrollState.firstVisibleItemIndex != 0 }
+    }
 
     val editorial = remember{ trendingViewModel.edt}
 
@@ -54,7 +46,7 @@ fun Trending(modifier: Modifier = Modifier,navController: NavController) {
             .background(color = Color.White)
     ) {
         ConstraintLayout(modifier = Modifier.fillMaxSize()) {
-            val (appTitle, trendingList, releaseTitle, releaseList) = createRefs()
+            val (appTitle, trendingList, releaseTitle, releaseList, enterExitFader) = createRefs()
             CustomText(
                 text = "Trending",
                 style = MaterialTheme.typography.h1,
@@ -89,8 +81,17 @@ fun Trending(modifier: Modifier = Modifier,navController: NavController) {
                         height= Dimension.fillToConstraints
                     },
                 editorial.value.albums.data,
-                navController
+                navController,
+                columnScrollState = scrollState
             )
+            if (isFirstItemVisible.value){
+                EnterExitFader(modifier = Modifier
+                    .constrainAs(enterExitFader) {
+                        top.linkTo(releaseList.top)
+                        start.linkTo(parent.start)
+                        end.linkTo(parent.end)
+                    })
+            }
         }
     }
 }
@@ -140,17 +141,14 @@ fun TrendingImage(imageUrl: String) {
 
 @ExperimentalMaterialApi
 @Composable
-fun ReleasedItem(modifier: Modifier = Modifier,albums: List<Album>,navController: NavController) {
-//    Surface(
-//        modifier = Modifier.fillMaxWidth().
-//    ) {
-//
-//    }
+fun ReleasedItem(modifier: Modifier = Modifier,albums: List<Album>,navController: NavController, columnScrollState: LazyListState) {
+
     LazyColumn(
         modifier = modifier
             .fillMaxWidth(),
         verticalArrangement = Arrangement.spacedBy(10.dp),
-        contentPadding = PaddingValues(all=10.dp)
+        contentPadding = PaddingValues(all=10.dp),
+        state = columnScrollState
 
     ) {
         items(albums) { album->

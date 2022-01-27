@@ -14,7 +14,7 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.lily.ui.screens.ParentScreen
-import com.example.lily.ui.screens.Trending
+import com.example.lily.ui.screens.trending.Trending
 import com.example.lily.ui.theme.LILYTheme
 
 class MainActivity : ComponentActivity() {

@@ -8,7 +8,7 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
-import com.example.lily.ui.screens.Trending
+import com.example.lily.ui.screens.trending.Trending
 import com.example.lily.ui.screens.album.AlbumScreen
 
 
