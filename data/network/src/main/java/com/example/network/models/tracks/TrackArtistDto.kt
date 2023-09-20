@@ -1,7 +1,7 @@
 package com.example.network.models.tracks
 
 data class TrackArtistDto(
-    val id: Int,
+    val id: Long,
     val link: String,
     val name: String,
     val picture: String,

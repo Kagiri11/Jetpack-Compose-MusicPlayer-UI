@@ -7,7 +7,7 @@ data class EditorialTrackDto(
     val explicit_content_cover: Int,
     val explicit_content_lyrics: Int,
     val explicit_lyrics: Boolean,
-    val id: Int,
+    val id: Long,
     val link: String,
     val md5_image: String,
     val position: Int,
