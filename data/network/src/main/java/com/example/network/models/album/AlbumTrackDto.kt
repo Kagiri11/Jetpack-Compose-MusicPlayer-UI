@@ -6,7 +6,7 @@ data class AlbumTrackDto(
     val explicit_content_cover: Int,
     val explicit_content_lyrics: Int,
     val explicit_lyrics: Boolean,
-    val id: Int,
+    val id: Long,
     val link: String,
     val md5_image: String,
     val preview: String,

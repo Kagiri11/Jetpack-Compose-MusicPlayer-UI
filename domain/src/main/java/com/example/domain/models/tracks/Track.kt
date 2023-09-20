@@ -4,7 +4,7 @@ data class Track(
     val album: Album,
     val artist: Artist,
     val duration: Int,
-    val id: Int,
+    val id: Long,
     val link: String?=null,
     val md5_image: String?=null,
     val preview: String?=null,

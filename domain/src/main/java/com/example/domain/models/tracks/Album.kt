@@ -6,7 +6,7 @@ data class Album(
     val cover_medium: String?=null,
     val cover_small:String?=null,
     val cover_xl: String?=null,
-    val id: Int,
+    val id: Long,
     val md5_image: String?=null,
     val title: String?=null,
     val tracklist: String?=null,

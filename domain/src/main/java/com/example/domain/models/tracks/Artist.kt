@@ -1,7 +1,7 @@
 package com.example.domain.models.tracks
 
 data class Artist(
-    val id: Int,
+    val id: Long,
     val link: String?=null,
     val name: String?=null,
     val picture: String?=null,
