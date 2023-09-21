@@ -5,7 +5,7 @@ data class Album(
     val available: Boolean,
     val contributors: List<AlbumContributor>,
     val cover: String,
-    val cover_big: String,
+    val coverBig: String,
     val cover_medium: String,
     val cover_small: String,
     val cover_xl: String,

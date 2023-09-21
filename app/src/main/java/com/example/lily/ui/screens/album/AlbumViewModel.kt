@@ -31,7 +31,7 @@ class AlbumViewModel(private val fetchAlbum: FetchAlbum) : ViewModel() {
         cover_small = "",
         cover = "",
         cover_medium = "",
-        cover_big = "",
+        coverBig = "",
         fans = 247502,
         genre_id = 21,
         genres = AlbumGenres(data = listOf()),

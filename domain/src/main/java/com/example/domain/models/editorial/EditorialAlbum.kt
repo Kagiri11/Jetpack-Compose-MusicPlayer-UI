@@ -2,13 +2,13 @@ package com.example.domain.models.editorial
 
 data class EditorialAlbum(
     val cover: String,
-    val cover_big: String,
-    val cover_medium: String,
-    val cover_small: String,
-    val cover_xl: String,
+    val coverBig: String,
+    val coverMedium: String,
+    val coverSmall: String,
+    val coverXl: String,
     val id: Int,
-    val md5_image: String,
+    val md5Image: String,
     val title: String,
-    val tracklist: String,
+    val trackList: String,
     val type: String
 )

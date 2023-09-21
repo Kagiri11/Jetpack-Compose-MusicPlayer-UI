@@ -12,7 +12,7 @@ fun AlbumDto.toDomain(): Album {
         contributors = contributors.map { it.toDomain() },
         genres = genres.toDomain(),
         tracks = tracks.toDomain(),
-        cover_big = cover_big,
+        coverBig = cover_big,
         cover_medium = cover_medium,
         cover = cover,
         cover_small = cover_small,
