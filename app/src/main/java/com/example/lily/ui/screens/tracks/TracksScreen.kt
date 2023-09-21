@@ -61,7 +61,7 @@ fun TracksScreen(modifier: Modifier = Modifier) {
                 verticalArrangement = Arrangement.spacedBy(10.dp)
             ){
                 items(songs.data){ song->
-                    TrackItem(trackCover = song.album.cover_medium,songArtistName = song.artist.name,songTitle = song.title_short,songDuration = song.duration)
+                    TrackItem(trackCover = song.album.coverMedium,songArtistName = song.artist.name,songTitle = song.titleShort,songDuration = song.duration)
                 }
             }
         }

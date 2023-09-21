@@ -6,9 +6,9 @@ data class Track(
     val duration: Int,
     val id: Long,
     val link: String?=null,
-    val md5_image: String?=null,
+    val md5Image: String?=null,
     val preview: String?=null,
     val title: String?=null,
-    val title_short: String?=null,
-    val title_version: String?=null,
+    val titleShort: String?=null,
+    val titleVersion: String?=null,
 )
