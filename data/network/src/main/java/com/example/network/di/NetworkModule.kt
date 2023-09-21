@@ -23,12 +23,4 @@ val networkModule= module {
             .build()
             .create(ApiService::class.java)
     }
-    single{
-        Retrofit.Builder()
-            .addConverterFactory(GsonConverterFactory.create())
-            .client(client)
-            .baseUrl(BASE_URL2)
-            .build()
-            .create(ApiDirect::class.java)
-    }
 }

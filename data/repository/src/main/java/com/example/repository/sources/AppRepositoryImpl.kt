@@ -10,7 +10,7 @@ import com.example.repository.mappers.toDomain
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
 
-class AppRepositoryImpl(private val api: ApiService,private val apiForSongs: ApiDirect): AppRepository {
+class AppRepositoryImpl(private val api: ApiService): AppRepository {
     override suspend fun fetchEditorial(): Flow<Editorial> {
         val editorials = api.getEditorsChoices()
         return flowOf(editorials.toDomain())
@@ -22,7 +22,7 @@ class AppRepositoryImpl(private val api: ApiService,private val apiForSongs: Api
     }
 
     override suspend fun fetchSongs(): Flow<Tracks> {
-        val tracks = apiForSongs.fetchSongs()
+        val tracks = api.fetchSongs()
         return flowOf(tracks.toDomain())
     }
 //    override suspend fun fetchArtist(artistId: Int): Flow<Artist> {
