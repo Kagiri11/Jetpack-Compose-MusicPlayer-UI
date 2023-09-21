@@ -52,7 +52,7 @@ fun AlbumScreen(navController: NavController, albumId: Int) {
                 top.linkTo(parent.top)
                 start.linkTo(parent.start)
                 end.linkTo(parent.end)
-            }, album.cover_xl
+            }, album.coverXl
         )
         AlbumMusicCard(
             modifier = Modifier.constrainAs(musicCard) {

@@ -113,7 +113,7 @@ fun TrendingSongs(modifier: Modifier = Modifier, artists: List<EditorialArtist>)
         horizontalArrangement = Arrangement.spacedBy(10.dp)
     ) {
         items(artists) { artist->
-            TrendingImage(artist.picture_medium)
+            TrendingImage(artist.pictureMedium)
         }
     }
 }
@@ -191,7 +191,7 @@ fun ReleasedItemComposable(album: Album,navController: NavController) {
 
         ) {
             val imagePainter = rememberImagePainter(
-                data = album.cover_xl,
+                data = album.coverXl,
                 builder = {
                     this.crossfade(1000)
                 }
@@ -221,7 +221,7 @@ fun ReleasedItemComposable(album: Album,navController: NavController) {
 
         )
         CustomText(
-            text = album.record_type,
+            text = album.recordType,
             style = MaterialTheme.typography.body2,
             modifier = Modifier.constrainAs(releasedTime){
                 start.linkTo(imageCard.end, margin = 15.dp)

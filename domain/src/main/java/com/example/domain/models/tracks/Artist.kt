@@ -5,10 +5,10 @@ data class Artist(
     val link: String?=null,
     val name: String?=null,
     val picture: String?=null,
-    val picture_big: String?=null,
-    val picture_medium: String?=null,
-    val picture_small: String?=null,
-    val picture_xl: String?=null,
-    val tracklist: String?=null,
+    val pictureBig: String?=null,
+    val pictureMedium: String?=null,
+    val pictureSmall: String?=null,
+    val pictureXl: String?=null,
+    val trackList: String?=null,
     val type: String
 )
