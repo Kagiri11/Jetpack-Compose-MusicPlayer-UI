@@ -15,6 +15,6 @@ data class EditorialTrack(
     val rank: Int,
     val title: String,
     val titleShort: String,
-    val titleVersion: String,
+    val titleVersion: String? = null,
     val type: String
 )

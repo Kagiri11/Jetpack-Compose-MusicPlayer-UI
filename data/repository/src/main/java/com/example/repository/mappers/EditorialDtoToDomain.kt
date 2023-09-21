@@ -94,20 +94,20 @@ internal fun EditorialTrackDto.toDomain(): EditorialTrack {
     return EditorialTrack(
         album = album.toDomain(),
         artist = artist.toDomain(),
-        duration,
-        explicit_content_cover,
-        explicit_content_lyrics,
-        explicit_lyrics,
-        id,
-        link,
-        md5_image,
-        position,
-        preview,
-        rank,
-        title,
-        title_short,
-        title_version,
-        type
+        duration = duration,
+        explicitContentCover = explicit_content_cover,
+        explicitContentLyrics = explicit_content_lyrics,
+        explicitLyrics = explicit_lyrics,
+        id = id,
+        link = link,
+        md5Image = md5_image,
+        position = position,
+        preview = preview,
+        rank = rank,
+        title = title,
+        titleShort = title_short,
+        titleVersion = title_version,
+        type = type
     )
 }
 
